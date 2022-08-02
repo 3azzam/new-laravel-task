@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Baby extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name', 'parent_id'
+    ];
+
+    public function scopeFilters($query, $filters)
+    {
+
+        if (isset($filters['id'])) {
+            $query->where('id', $filters['id']);
+        }
+
+        return $query;
+    }
 }

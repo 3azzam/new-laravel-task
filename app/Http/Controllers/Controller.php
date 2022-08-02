@@ -17,8 +17,23 @@ class Controller extends BaseController
         return response()->json($mergeData);
     }
 
+    public function badRequestResponse($message = "resource not found")
+    {
+        return response()->json(['message' => $message, 'status' => 400], 400);
+    }
+
     public function updatedResponse()
     {
-        return response()->json(['status' => 201], 201);
+        return response()->json(['message' => 'updated successfully', 'status' => 201], 201);
+    }
+
+    public function deletedResponse()
+    {
+        return response()->json(['message' => 'deleted successfully', 'status' => 201], 201);
+    }
+
+    public function serverErrorResponse()
+    {
+        return response()->json(['message' => "server error ... please try again later", 'status' => 500], 500);
     }
 }
