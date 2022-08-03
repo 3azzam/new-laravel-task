@@ -25,9 +25,7 @@ class AddPartnerRequest extends FormRequest
     {
         return [
             //
-            'user_id' => 'required|exits:users,id',
-            'partner_id' => 'required|exits:users,id',
-
+            'partner_id' => 'required|exists:users,id|not_in:'.request()->user_id,
         ];
     }
 }

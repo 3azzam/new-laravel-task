@@ -21,6 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::apiResource('partners', UsersController::class);
 Route::apiResource('babies', BabiesController::class);
-Route::post('/partners/add-partner', [UsersController::class, 'addPartner']);
+Route::apiResource('partners', UsersController::class);
+Route::post('/partners/invite/{user_id}', [UsersController::class, 'addPartner']);

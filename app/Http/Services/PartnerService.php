@@ -23,8 +23,8 @@ class PartnerService
         $partner1 = User::find($data['user_id'])->update(['partner_id' => $data['partner_id']]);
         $partner2 = User::find($data['partner_id'])->update(['partner_id' => $data['user_id']]);
         return [
-            'user' => $partner1->fresh(),
-            'partner' =>  $partner2->fresh()
+            'user' => $partner1,
+            'partner' =>  $partner2
         ];
     }
 }

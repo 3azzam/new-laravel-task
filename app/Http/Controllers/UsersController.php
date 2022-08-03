@@ -20,9 +20,9 @@ class UsersController extends Controller
         return $this->successResponse($this->partnerService->get($request->all()));
     }
 
-    public function addPartner(AddPartnerRequest $request)
+    public function addPartner($user_id, AddPartnerRequest $request)
     {
-        $this->partnerService->addPartner($request->validated());
+        $this->partnerService->addPartner(array_merge($request->validated(), ['user_id' => $user_id]));
         return $this->updatedResponse();
     }
 }
