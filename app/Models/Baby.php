@@ -20,6 +20,10 @@ class Baby extends Model
             $query->where('id', $filters['id']);
         }
 
+        if(isset($filters['parent_ids'])) {
+            $query->whereIn('parent_id', $filters['parent_ids']);
+        }
+        
         return $query;
     }
 }

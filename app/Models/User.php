@@ -41,13 +41,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function partner() {
+        return $this->belongsTo(User::class , 'partner_id' , 'id');
+    }
+
 
     public function scopeFilters($query, $filters)
     {
         if (isset($filters['id'])) {
             $query->where('id', $filters['id']);
         }
-
+        
         return $query;
     }
 }

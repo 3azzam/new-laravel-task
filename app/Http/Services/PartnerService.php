@@ -9,7 +9,12 @@ class PartnerService
 
     public function get($filters)
     {
-        return User::filters($filters)->paginate(isset($filters['per_page']) ? (int) $filters['per_page'] : 10);
+        return User::with('partner')->filters($filters)->paginate(isset($filters['per_page']) ? (int) $filters['per_page'] : 10);
+    }
+
+    public function getOne($filters)
+    {
+        return User::with('partner')->filters($filters)->first();
     }
 
     public function add($data)
